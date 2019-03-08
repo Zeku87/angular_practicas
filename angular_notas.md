@@ -26,7 +26,7 @@ Desarrollaremos las aplicaciones en TypeScript, superconjunto de JavaScript que 
 
 [Más sobre Web Components](https://www.webcomponents.org/introduction#es-modules)
 
-##Aplicaciones SPA
+## Aplicaciones SPA
 
 Una aplicación web está proporcionada por un servidor web y es utilizada mediante un cliente web. Por tanto toda aplicación web tiene una arquitectura basada en cliente-servidor. Hay varios tipos:
 
