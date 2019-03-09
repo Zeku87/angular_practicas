@@ -29,6 +29,10 @@ let persona = {
     nombre: "Juan",
     edad: 22
 };
+
+//Cuando a una variable se le asigna null o undefined, el tipo se convierte al tipo dinámico any
+var a = null; //a se convierte a any
+var b = undefined; //b se convierte a any
 ```
 
 ### Plantillas de literales
@@ -90,7 +94,7 @@ var unModulo: MiModulo = MiModulo;
 
 ## Declaración de tipos avanzados
 
-Cuando vayamos a programar necesitaremos algo más de lo visto anteriormente. Los arrays en Typescript también están estáticamente tipados, por ejemplo un array de números tendría la siguiente declaración de su tipo:
+Los arrays en TypeScript también están estáticamente tipados, por ejemplo un array de números tendría la siguiente declaración de su tipo:
 
 ```Typescript
 //Declaración de un array de números vacío
@@ -111,5 +115,42 @@ for(var i:number = 0; i < arrayNumeros3.length; i++){
 //arrayNumeros3 contiene ahora los elementos [100, 101, 102, 103];
 
 ```
+Tenemos la posibilidad de crear arrays de objetos como en C++
+
+```Typescript
+//Sea una clase cualquiera
+class MiClase{ ... }
+
+//Podemos declarar un array de objetos de tipo MiClase
+var arrayObjetos: MiClase[] = [];
+
+//Y llenarlo por ejemplo usando el método push()
+arrayObjetos.push(new MiClase());
+arrayObjetos.push(new MiClase());
+arrayObjetos.push(new MiClase());
+
+//Ahora el array tiene tres objetos de tipo MiClase
+```
 
 [Más sobre arrays](https://www.tutorialspoint.com/typescript/typescript_arrays.htm)
+
+En TypeScript podemos declarar tipos como funciones. Es decir podemos asignar a una variable una función.
+
+```Typescript
+
+//declaramos el tipo de la variable suma como el de una función
+//entre llaves indicamos los parámetros de entrada entre paréntesis y el tipo de retorno fuera de los paréntesis
+//por lo tanto suma es una función que acepta dos parámetros de entrada a y b de tipo número
+//y el tipo de retorno es de tipo número
+var suma: {(a: number, b: number): number; };
+
+//ahora asignamos a suma el cuerpo de la función, es decir la lógica que necesitamos
+suma = function(a: number, b:number): number {
+     return a + b;
+}
+
+//Podríamos hacer todo esto en un solo paso
+var suma: {(a: number, b: number): number; } = function(a: number, b:number): number {
+     return a + b;
+}
+```
