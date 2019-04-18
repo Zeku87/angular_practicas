@@ -1,18 +1,18 @@
-//dependencies
+//dependencias
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./config/database.js');
-
-//instance of express server
+const controller = require('./controllers/controller')
+//creamos una instancia del servidor express
 const app = express();
 
-//port
+//puerto
 const port = 3001;
 
-//CORS middleware for all routes
+//CORS middleware para todas las rutas
 //https://expressjs.com/en/resources/middleware/cors.html
 app.use(cors());
 
@@ -24,16 +24,21 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Establecimiento de conexión con la base de datos mediante mongoose
-//Let's establish conection with the databse using mongoose
 //https://mongoosejs.com/
 mongoose.connect(config.database);
 
-//example of a route
+//ejemplo de ruta en la que se hace una petición http
+//en el objeto req se almacena la solicitud
+//en el objeto res se almacena la respuesta
 app.get('/ruta', (req, res) => {
     res.send("Esta ruta no contiene información")
-});
+}); 
 
-//listening 
+//El enrutado para las solicitudes HTTP van en el controlador
+//Todas estas rutas estarán precedidas por /lista
+app.use('/lista', controller);
+
+//escuchando el puerto especificado
 app.listen(port, () => {
     console.log(`Listening at ${port}`)
 })
