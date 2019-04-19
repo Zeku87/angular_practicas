@@ -29,7 +29,7 @@ module.exports = collectionList
 //exportamos métodos que realizan consultas sobre la coleccion de datos
 
 //devuelve todos lo datos de la coleccion
-module.exports.getAllList = () => {
-    collectionList.find();
+module.exports.getAllList = (callback) => {
+    collectionList.find(callback);
 }
 
