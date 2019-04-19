@@ -18,3 +18,18 @@ const schema = mongoose.Schema({
         enum: ['Alta', 'Media', 'Baja']
     }
 });
+
+//damos nombre a la coleccion de datos que surgirá del esquema
+//y almacenamos dicha coleccion en un variable para usarla posteriormente
+let collectionList = mongoose.model('lista_colleccion', schema);
+
+//exportamos el esquema
+module.exports = collectionList
+
+//exportamos métodos que realizan consultas sobre la coleccion de datos
+
+//devuelve todos lo datos de la coleccion
+module.exports.getAllList = () => {
+    collectionList.find();
+}
+
