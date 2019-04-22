@@ -39,7 +39,6 @@ router.get('/', (req, res) => {
     })
 })
 
-
 //exportamos el objeto router
 //en app.js se importará mediante require
-module.exports = router; 
+module.exports = router;
