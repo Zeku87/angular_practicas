@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+//importación de messages de PrimeNG
+
+
 //importamos JQUERY
 import * as $ from 'jquery';
 
